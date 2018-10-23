@@ -2,8 +2,8 @@ module Data.Lattice where
 
 import Prelude hiding (bottom, join, top)
 
-import Data.Generic (class Generic, gShow)
-import Data.Monoid (class Monoid)
+import Data.Generic.Rep (class Generic)
+import Data.Generic.Rep.Show (genericShow)
 import Data.Newtype (class Newtype, over2)
 
 -- | A `JoinSemilattice` must satisfy the following laws:
@@ -97,11 +97,11 @@ instance boundedLatticeBoolean ∷ BoundedLattice Boolean
 newtype Meet a = MkMeet a
 
 derive instance newtypeMeet :: Newtype (Meet a) _
-derive instance genericMeet :: Generic a => Generic (Meet a)
+derive instance genericMeet :: Generic (Meet a) _
 derive newtype instance eqMeet :: Eq a => Eq (Meet a)
 derive newtype instance ordMeet :: Ord a => Ord (Meet a)
 derive newtype instance boundedMeet :: Bounded a => Bounded (Meet a)
-instance showMeet :: Generic a => Show (Meet a) where show = gShow
+instance showMeet :: Show a => Show (Meet a) where show = genericShow
 
 instance semigroupMeet :: MeetSemilattice a => Semigroup (Meet a) where
   append = over2 MkMeet meet
@@ -114,11 +114,11 @@ instance monoidMeet :: BoundedMeetSemilattice a => Monoid (Meet a) where
 newtype Join a = MkJoin a
 
 derive instance newtypeJoin :: Newtype (Join a) _
-derive instance genericJoin :: Generic a => Generic (Join a)
+derive instance genericJoin :: Generic (Join a) _
 derive newtype instance eqJoin :: Eq a => Eq (Join a)
 derive newtype instance ordJoin :: Ord a => Ord (Join a)
 derive newtype instance boundedJoin :: Bounded a => Bounded (Join a)
-instance showJoin :: Generic a => Show (Join a) where show = gShow
+instance showJoin :: Show a => Show (Join a) where show = genericShow
 
 instance semigroupJoin :: JoinSemilattice a => Semigroup (Join a) where
   append = over2 MkJoin join

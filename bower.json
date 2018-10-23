@@ -1,9 +1,9 @@
 {
-  "name": "purescript-lattice",
+  "name": "purescript-colehaus-lattice",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Risto-Stevcev/purescript-lattice.git"
+    "url": "git://github.com/colehaus/purescript-lattice.git"
   },
   "ignore": [
     "**/.*",
@@ -12,13 +12,12 @@
     "output"
   ],
   "dependencies": {
-    "purescript-prelude": "^3.1.0",
-    "purescript-console": "^3.0.0",
-    "purescript-properties": "^0.2.0"
+    "purescript-colehaus-properties": "^0.3.2",
+    "purescript-generics-rep": "^6.1.0",
+    "purescript-prelude": "^4.1.0",
+    "purescript-proxy": "^3.0.0"
   },
   "devDependencies": {
-    "purescript-psci-support": "^3.0.0",
-    "purescript-spec": "^1.0.0",
-    "purescript-spec-quickcheck": "^1.0.0"
+    "purescript-psci-support": "^4.0.0"
   }
 }
